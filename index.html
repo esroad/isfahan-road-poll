@@ -10,11 +10,13 @@
 
     <title>نظرسنجی وضعیت راه‌های استان اصفهان</title>
 
+
     <style>
 
         * {
             box-sizing: border-box;
         }
+
 
         body {
             margin: 0;
@@ -23,11 +25,13 @@
             color: #222;
         }
 
+
         .container {
             max-width: 600px;
             margin: 30px auto;
             padding: 20px;
         }
+
 
         .poll-box {
             background: white;
@@ -36,10 +40,12 @@
             box-shadow: 0 5px 25px rgba(0,0,0,0.08);
         }
 
+
         .header {
             text-align: center;
             margin-bottom: 25px;
         }
+
 
         .header h1 {
             font-size: 22px;
@@ -47,10 +53,12 @@
             line-height: 1.7;
         }
 
+
         .header p {
             color: #666;
             font-size: 14px;
         }
+
 
         .question {
             font-size: 18px;
@@ -58,6 +66,7 @@
             line-height: 1.8;
             margin-bottom: 20px;
         }
+
 
         .option {
             display: flex;
@@ -71,10 +80,12 @@
             background: #fff;
         }
 
+
         .option:hover {
             border-color: #1976d2;
             background: #f7fbff;
         }
+
 
         .option input {
             margin-left: 12px;
@@ -82,10 +93,12 @@
             height: 19px;
         }
 
+
         .option span {
             line-height: 1.7;
             font-size: 15px;
         }
+
 
         .vote-btn {
             width: 100%;
@@ -100,14 +113,17 @@
             margin-top: 10px;
         }
 
+
         .vote-btn:hover {
             background: #125ca5;
         }
+
 
         .vote-btn:disabled {
             opacity: 0.7;
             cursor: not-allowed;
         }
+
 
         .message {
             display: none;
@@ -120,10 +136,18 @@
             font-weight: bold;
         }
 
+
+        .already-voted {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+
         .results {
             display: none;
             margin-top: 30px;
         }
+
 
         .results h2 {
             text-align: center;
@@ -131,9 +155,11 @@
             margin-bottom: 25px;
         }
 
+
         .result-item {
             margin-bottom: 20px;
         }
+
 
         .result-title {
             display: flex;
@@ -144,11 +170,13 @@
             margin-bottom: 7px;
         }
 
+
         .percentage {
             font-weight: bold;
             color: #1976d2;
             white-space: nowrap;
         }
+
 
         .bar {
             width: 100%;
@@ -158,6 +186,7 @@
             overflow: hidden;
         }
 
+
         .bar-fill {
             height: 100%;
             width: 0%;
@@ -166,12 +195,14 @@
             transition: width 0.8s ease;
         }
 
+
         .total-votes {
             text-align: center;
             margin-top: 25px;
             color: #666;
             font-size: 14px;
         }
+
 
         @media (max-width: 600px) {
 
@@ -201,9 +232,11 @@
 
 <body>
 
+
 <div class="container">
 
     <div class="poll-box">
+
 
         <div class="header">
 
@@ -224,6 +257,7 @@
 
 
         <div class="options">
+
 
             <label class="option">
 
@@ -280,6 +314,7 @@
 
             </label>
 
+
         </div>
 
 
@@ -306,14 +341,783 @@
             class="results"
             id="results">
 
+
             <h2>
                 📊 نتایج نظرسنجی
             </h2>
 
+
+            <!-- گزینه 1 -->
 
             <div class="result-item">
 
                 <div class="result-title">
 
                     <span>
-                        سامانه ۱۴۱ (تلفن گویا، سایت
+                        سامانه ۱۴۱ (تلفن گویا، سایت یا اپلیکیشن)
+                    </span>
+
+                    <span
+                        class="percentage"
+                        id="percent0">
+
+                        0%
+
+                    </span>
+
+                </div>
+
+
+                <div class="bar">
+
+                    <div
+                        class="bar-fill"
+                        id="bar0">
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- گزینه 2 -->
+
+            <div class="result-item">
+
+                <div class="result-title">
+
+                    <span>
+                        مسیریاب‌ها و سکوهای هوشمند
+                    </span>
+
+                    <span
+                        class="percentage"
+                        id="percent1">
+
+                        0%
+
+                    </span>
+
+                </div>
+
+
+                <div class="bar">
+
+                    <div
+                        class="bar-fill"
+                        id="bar1">
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- گزینه 3 -->
+
+            <div class="result-item">
+
+                <div class="result-title">
+
+                    <span>
+                        رسانه‌ها و شبکه‌های اجتماعی
+                    </span>
+
+                    <span
+                        class="percentage"
+                        id="percent2">
+
+                        0%
+
+                    </span>
+
+                </div>
+
+
+                <div class="bar">
+
+                    <div
+                        class="bar-fill"
+                        id="bar2">
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- گزینه 4 -->
+
+            <div class="result-item">
+
+                <div class="result-title">
+
+                    <span>
+                        تابلوهای جاده‌ای و اطلاع‌رسانی‌های میدانی راهداری و پلیس
+                    </span>
+
+                    <span
+                        class="percentage"
+                        id="percent3">
+
+                        0%
+
+                    </span>
+
+                </div>
+
+
+                <div class="bar">
+
+                    <div
+                        class="bar-fill"
+                        id="bar3">
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="total-votes">
+
+                تعداد کل آرا:
+                <strong id="totalVotes">0</strong>
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+
+<script>
+
+
+/* =====================================================
+   تنظیمات Supabase
+===================================================== */
+
+const SUPABASE_URL =
+    "https://pnurzcnriegzpckctfeo.supabase.co";
+
+
+const SUPABASE_KEY =
+    "sb_publishable_lYQIgXetaNJ87YB292bmvg_pkM7MLE-";
+
+
+
+/* =====================================================
+   ساخت شناسه مخصوص این مرورگر
+===================================================== */
+
+function getVoterId() {
+
+    let voterId =
+        localStorage.getItem("poll_voter_id");
+
+
+    if (!voterId) {
+
+        if (
+            window.crypto &&
+            crypto.randomUUID
+        ) {
+
+            voterId =
+                crypto.randomUUID();
+
+        } else {
+
+            voterId =
+                "voter-" +
+                Date.now() +
+                "-" +
+                Math.random()
+                    .toString(36)
+                    .substring(2);
+
+        }
+
+
+        localStorage.setItem(
+            "poll_voter_id",
+            voterId
+        );
+
+    }
+
+
+    return voterId;
+}
+
+
+
+/* =====================================================
+   دریافت آرا از Supabase
+===================================================== */
+
+async function getVotes() {
+
+    const response =
+        await fetch(
+
+            SUPABASE_URL +
+            "/rest/v1/votes?select=option",
+
+            {
+
+                method: "GET",
+
+                headers: {
+
+                    "apikey":
+                        SUPABASE_KEY,
+
+                    "Authorization":
+                        "Bearer " +
+                        SUPABASE_KEY
+
+                }
+
+            }
+
+        );
+
+
+    if (!response.ok) {
+
+        throw new Error(
+            "خطا در دریافت نتایج"
+        );
+
+    }
+
+
+    return await response.json();
+
+}
+
+
+
+/* =====================================================
+   نمایش نتایج
+===================================================== */
+
+async function showResults() {
+
+    const resultsBox =
+        document.getElementById("results");
+
+
+    /* نتایج همیشه نمایش داده شوند */
+
+    resultsBox.style.display =
+        "block";
+
+
+    try {
+
+
+        const data =
+            await getVotes();
+
+
+        const votes =
+            [0, 0, 0, 0];
+
+
+        data.forEach(item => {
+
+
+            const option =
+                Number(item.option);
+
+
+            if (
+                option >= 0 &&
+                option <= 3
+            ) {
+
+                votes[option]++;
+
+            }
+
+        });
+
+
+        const total =
+            votes[0] +
+            votes[1] +
+            votes[2] +
+            votes[3];
+
+
+        document
+            .getElementById("totalVotes")
+            .innerText =
+            total;
+
+
+        /* محاسبه درصدها */
+
+        for (
+            let i = 0;
+            i < 4;
+            i++
+        ) {
+
+
+            let percentage = 0;
+
+
+            if (total > 0) {
+
+                percentage =
+                    (
+                        (votes[i] / total) *
+                        100
+                    ).toFixed(1);
+
+            }
+
+
+            document
+                .getElementById(
+                    "percent" + i
+                )
+                .innerText =
+                percentage + "%";
+
+
+            document
+                .getElementById(
+                    "bar" + i
+                )
+                .style.width =
+                percentage + "%";
+
+
+        }
+
+
+    } catch (error) {
+
+
+        console.error(
+            "خطا:",
+            error
+        );
+
+
+        document
+            .getElementById("totalVotes")
+            .innerText =
+            "خطا در دریافت";
+
+
+    }
+
+}
+
+
+
+/* =====================================================
+   غیرفعال کردن رأی برای کسی که قبلاً رأی داده
+===================================================== */
+
+function checkPreviousVote() {
+
+
+    const voted =
+        localStorage.getItem(
+            "poll_voted"
+        );
+
+
+    if (voted === "yes") {
+
+
+        const button =
+            document.getElementById(
+                "voteButton"
+            );
+
+
+        button.disabled =
+            true;
+
+
+        button.innerText =
+            "شما قبلاً رأی داده‌اید ✓";
+
+
+        document
+            .querySelectorAll(
+                'input[name="poll"]'
+            )
+            .forEach(input => {
+
+                input.disabled =
+                    true;
+
+            });
+
+
+        const message =
+            document.getElementById(
+                "message"
+            );
+
+
+        message.style.display =
+            "block";
+
+
+        message.classList.add(
+            "already-voted"
+        );
+
+
+        message.innerText =
+            "ℹ️ شما قبلاً در این نظرسنجی شرکت کرده‌اید.";
+
+    }
+
+}
+
+
+
+/* =====================================================
+   ثبت رأی
+===================================================== */
+
+async function submitVote() {
+
+
+    const selected =
+        document.querySelector(
+            'input[name="poll"]:checked'
+        );
+
+
+    if (!selected) {
+
+        alert(
+            "لطفاً یکی از گزینه‌ها را انتخاب کنید."
+        );
+
+        return;
+
+    }
+
+
+
+    /* بررسی دوباره قبل از ارسال */
+
+    if (
+        localStorage.getItem(
+            "poll_voted"
+        ) === "yes"
+    ) {
+
+        alert(
+            "شما قبلاً رأی داده‌اید."
+        );
+
+        return;
+
+    }
+
+
+
+    const option =
+        parseInt(
+            selected.value
+        );
+
+
+    const voterId =
+        getVoterId();
+
+
+
+    const button =
+        document.getElementById(
+            "voteButton"
+        );
+
+
+    button.disabled =
+        true;
+
+
+    button.innerText =
+        "در حال ثبت رأی...";
+
+
+
+    try {
+
+
+        const response =
+            await fetch(
+
+                SUPABASE_URL +
+                "/rest/v1/votes",
+
+                {
+
+                    method: "POST",
+
+
+                    headers: {
+
+                        "apikey":
+                            SUPABASE_KEY,
+
+                        "Authorization":
+                            "Bearer " +
+                            SUPABASE_KEY,
+
+                        "Content-Type":
+                            "application/json",
+
+                        "Prefer":
+                            "return=minimal"
+
+                    },
+
+
+                    body:
+                        JSON.stringify({
+
+                            option:
+                                option,
+
+                            voter_id:
+                                voterId
+
+                        })
+
+                }
+
+            );
+
+
+
+        /* اگر voter_id قبلاً ثبت شده باشد */
+
+        if (
+            response.status === 409
+        ) {
+
+            localStorage.setItem(
+                "poll_voted",
+                "yes"
+            );
+
+
+            button.innerText =
+                "شما قبلاً رأی داده‌اید ✓";
+
+
+            document
+                .querySelectorAll(
+                    'input[name="poll"]'
+                )
+                .forEach(input => {
+
+                    input.disabled =
+                        true;
+
+                });
+
+
+            const message =
+                document.getElementById(
+                    "message"
+                );
+
+
+            message.style.display =
+                "block";
+
+
+            message.classList.add(
+                "already-voted"
+            );
+
+
+            message.innerText =
+                "ℹ️ شما قبلاً در این نظرسنجی شرکت کرده‌اید.";
+
+
+            await showResults();
+
+
+            return;
+
+        }
+
+
+
+        if (!response.ok) {
+
+            const errorText =
+                await response.text();
+
+
+            console.error(
+                errorText
+            );
+
+
+            throw new Error(
+                "خطا در ثبت رأی"
+            );
+
+        }
+
+
+
+        /* ذخیره اینکه این مرورگر رأی داده */
+
+        localStorage.setItem(
+            "poll_voted",
+            "yes"
+        );
+
+
+
+        /* پیام موفقیت */
+
+        const message =
+            document.getElementById(
+                "message"
+            );
+
+
+        message.style.display =
+            "block";
+
+
+        message.classList.remove(
+            "already-voted"
+        );
+
+
+        message.innerText =
+            "✅ رأی شما با موفقیت ثبت شد.";
+
+
+
+        /* غیرفعال کردن گزینه‌ها */
+
+        document
+            .querySelectorAll(
+                'input[name="poll"]'
+            )
+            .forEach(input => {
+
+                input.disabled =
+                    true;
+
+            });
+
+
+
+        button.innerText =
+            "رأی ثبت شد ✓";
+
+
+
+        /* به‌روزرسانی نتایج */
+
+        await showResults();
+
+
+        /* رفتن خودکار به نتایج */
+
+        setTimeout(() => {
+
+            document
+                .getElementById("results")
+                .scrollIntoView({
+
+                    behavior:
+                        "smooth",
+
+                    block:
+                        "start"
+
+                });
+
+        }, 300);
+
+
+
+    } catch (error) {
+
+
+        console.error(
+            error
+        );
+
+
+        alert(
+            "ثبت رأی انجام نشد. اتصال اینترنت و تنظیمات Supabase را بررسی کنید."
+        );
+
+
+        button.disabled =
+            false;
+
+
+        button.innerText =
+            "ثبت رأی";
+
+    }
+
+}
+
+
+
+/* =====================================================
+   هنگام باز شدن صفحه
+===================================================== */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    async function () {
+
+
+        /* شناسه مرورگر ساخته شود */
+
+        getVoterId();
+
+
+        /* بررسی رأی قبلی */
+
+        checkPreviousVote();
+
+
+        /* نمایش نتایج */
+
+        await showResults();
+
+    }
+);
+
+
+</script>
+
+
+</body>
+
+</html>
