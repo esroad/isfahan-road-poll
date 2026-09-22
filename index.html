@@ -291,58 +291,43 @@
 
 
 <script>
+const SUPABASE_URL = "https://pnurzcnriegzpckctfeo.supabase.co";
+const SUPABASE_KEY = "sb_publishable_lYQIgXetaNJ87YB292bmvg_pkM7MLE-";
 
-    // دریافت آمار قبلی
-    let votes = JSON.parse(localStorage.getItem("pollVotes"));
 
-    if (!votes) {
-        votes = [0, 0, 0, 0];
-    }
-
-    function submitVote() {
-
-        const selected = document.querySelector(
-            'input[name="poll"]:checked'
-        );
-
-        if (!selected) {
-            alert("لطفاً یکی از گزینه‌ها را انتخاب کنید.");
-            return;
+async function getVotes() {
+    const response = await fetch(
+        SUPABASE_URL + "/rest/v1/votes?select=option",
+        {
+            method: "GET",
+            headers: {
+                "apikey": SUPABASE_KEY,
+                "Authorization": "Bearer " + SUPABASE_KEY
+            }
         }
+    );
 
-        const option = parseInt(selected.value);
-
-        // ثبت رأی
-        votes[option]++;
-
-        // ذخیره در مرورگر
-        localStorage.setItem(
-            "pollVotes",
-            JSON.stringify(votes)
-        );
-
-        // نمایش پیام
-        document.getElementById("message").style.display = "block";
-
-        // نمایش نتایج
-        document.getElementById("results").style.display = "block";
-
-        // محاسبه و نمایش درصدها
-        showResults();
-
-        // جلوگیری از رأی مجدد در همین مرورگر
-        document.querySelectorAll(
-            'input[name="poll"]'
-        ).forEach(function(input) {
-            input.disabled = true;
-        });
-
-        document.querySelector(".vote-btn").disabled = true;
-        document.querySelector(".vote-btn").style.opacity = "0.6";
+    if (!response.ok) {
+        throw new Error("خطا در دریافت نتایج");
     }
 
+    return await response.json();
+}
 
-    function showResults() {
+
+async function showResults() {
+    try {
+        const data = await getVotes();
+
+        const votes = [0, 0, 0, 0];
+
+        data.forEach(item => {
+            const option = Number(item.option);
+
+            if (option >= 0 && option <= 3) {
+                votes[option]++;
+            }
+        });
 
         const total =
             votes[0] +
@@ -352,25 +337,105 @@
 
         document.getElementById("totalVotes").innerText = total;
 
-        if (total === 0) {
-            return;
-        }
+        if (total === 0) return;
 
         for (let i = 0; i < 4; i++) {
 
             const percentage =
                 ((votes[i] / total) * 100).toFixed(1);
 
-            document.getElementById(
-                "percent" + i
-            ).innerText = percentage + "%";
+            document.getElementById("percent" + i).innerText =
+                percentage + "%";
 
-            document.getElementById(
-                "bar" + i
-            ).style.width = percentage + "%";
+            document.getElementById("bar" + i).style.width =
+                percentage + "%";
         }
+
+        document.getElementById("results").style.display = "block";
+
+    } catch (error) {
+
+        console.error(error);
+        alert("دریافت نتایج با خطا مواجه شد.");
+    }
+}
+
+
+async function submitVote() {
+
+    const selected =
+        document.querySelector('input[name="poll"]:checked');
+
+    if (!selected) {
+        alert("لطفاً یکی از گزینه‌ها را انتخاب کنید.");
+        return;
     }
 
+    const option = parseInt(selected.value);
+
+    const button =
+        document.querySelector(".vote-btn");
+
+    button.disabled = true;
+    button.innerText = "در حال ثبت رأی...";
+
+
+    try {
+
+        const response = await fetch(
+            SUPABASE_URL + "/rest/v1/votes",
+            {
+                method: "POST",
+
+                headers: {
+                    "apikey": SUPABASE_KEY,
+                    "Authorization": "Bearer " + SUPABASE_KEY,
+                    "Content-Type": "application/json",
+                    "Prefer": "return=minimal"
+                },
+
+                body: JSON.stringify({
+                    option: option
+                })
+            }
+        );
+
+
+        if (!response.ok) {
+            throw new Error("خطا در ثبت رأی");
+        }
+
+
+        document.getElementById("message").style.display =
+            "block";
+
+
+        document
+            .querySelectorAll('input[name="poll"]')
+            .forEach(input => {
+                input.disabled = true;
+            });
+
+
+        button.innerText = "رأی ثبت شد ✓";
+
+
+        await showResults();
+
+
+    } catch (error) {
+
+        console.error(error);
+
+        alert(
+            "ثبت رأی انجام نشد. اتصال اینترنت و تنظیمات Supabase را بررسی کنید."
+        );
+
+        button.disabled = false;
+        button.innerText = "ثبت رأی";
+    }
+                       }
+    
 </script>
 
 </body>
