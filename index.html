@@ -1,12 +1,17 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
     <title>نظرسنجی وضعیت راه‌های استان اصفهان</title>
 
     <style>
+
         * {
             box-sizing: border-box;
         }
@@ -99,6 +104,11 @@
             background: #125ca5;
         }
 
+        .vote-btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+
         .message {
             display: none;
             text-align: center;
@@ -164,6 +174,7 @@
         }
 
         @media (max-width: 600px) {
+
             .container {
                 margin: 10px auto;
                 padding: 10px;
@@ -180,9 +191,13 @@
             .question {
                 font-size: 17px;
             }
+
         }
+
     </style>
+
 </head>
+
 
 <body>
 
@@ -191,252 +206,114 @@
     <div class="poll-box">
 
         <div class="header">
+
             <h1>نظرسنجی</h1>
-            <p>وضعیت راه‌های استان اصفهان</p>
+
+            <p>
+                وضعیت راه‌های استان اصفهان
+            </p>
+
         </div>
 
+
         <div class="question">
+
             اطلاعات مربوط به وضعیت راه‌های استان اصفهان را معمولاً از چه طریقی دریافت می‌کنید؟
+
         </div>
+
 
         <div class="options">
 
             <label class="option">
-                <input type="radio" name="poll" value="0">
-                <span>سامانه ۱۴۱ (تلفن گویا، سایت یا اپلیکیشن)</span>
+
+                <input
+                    type="radio"
+                    name="poll"
+                    value="0">
+
+                <span>
+                    سامانه ۱۴۱ (تلفن گویا، سایت یا اپلیکیشن)
+                </span>
+
             </label>
 
-            <label class="option">
-                <input type="radio" name="poll" value="1">
-                <span>مسیریاب‌ها و سکوهای هوشمند</span>
-            </label>
 
             <label class="option">
-                <input type="radio" name="poll" value="2">
-                <span>رسانه‌ها و شبکه‌های اجتماعی</span>
+
+                <input
+                    type="radio"
+                    name="poll"
+                    value="1">
+
+                <span>
+                    مسیریاب‌ها و سکوهای هوشمند
+                </span>
+
             </label>
 
+
             <label class="option">
-                <input type="radio" name="poll" value="3">
-                <span>تابلوهای جاده‌ای و اطلاع‌رسانی‌های میدانی راهداری و پلیس</span>
+
+                <input
+                    type="radio"
+                    name="poll"
+                    value="2">
+
+                <span>
+                    رسانه‌ها و شبکه‌های اجتماعی
+                </span>
+
+            </label>
+
+
+            <label class="option">
+
+                <input
+                    type="radio"
+                    name="poll"
+                    value="3">
+
+                <span>
+                    تابلوهای جاده‌ای و اطلاع‌رسانی‌های میدانی راهداری و پلیس
+                </span>
+
             </label>
 
         </div>
 
-        <button class="vote-btn" onclick="submitVote()">
+
+        <button
+            class="vote-btn"
+            id="voteButton"
+            onclick="submitVote()">
+
             ثبت رأی
+
         </button>
 
-        <div class="message" id="message">
+
+        <div
+            class="message"
+            id="message">
+
             ✅ رأی شما با موفقیت ثبت شد.
-        </div>
-
-        <div class="results" id="results">
-
-            <h2>📊 نتایج نظرسنجی</h2>
-
-            <div class="result-item">
-                <div class="result-title">
-                    <span>سامانه ۱۴۱ (تلفن گویا، سایت یا اپلیکیشن)</span>
-                    <span class="percentage" id="percent0">0%</span>
-                </div>
-
-                <div class="bar">
-                    <div class="bar-fill" id="bar0"></div>
-                </div>
-            </div>
-
-            <div class="result-item">
-                <div class="result-title">
-                    <span>مسیریاب‌ها و سکوهای هوشمند</span>
-                    <span class="percentage" id="percent1">0%</span>
-                </div>
-
-                <div class="bar">
-                    <div class="bar-fill" id="bar1"></div>
-                </div>
-            </div>
-
-            <div class="result-item">
-                <div class="result-title">
-                    <span>رسانه‌ها و شبکه‌های اجتماعی</span>
-                    <span class="percentage" id="percent2">0%</span>
-                </div>
-
-                <div class="bar">
-                    <div class="bar-fill" id="bar2"></div>
-                </div>
-            </div>
-
-            <div class="result-item">
-                <div class="result-title">
-                    <span>تابلوهای جاده‌ای و اطلاع‌رسانی‌های میدانی راهداری و پلیس</span>
-                    <span class="percentage" id="percent3">0%</span>
-                </div>
-
-                <div class="bar">
-                    <div class="bar-fill" id="bar3"></div>
-                </div>
-            </div>
-
-            <div class="total-votes">
-                تعداد کل آرا: <strong id="totalVotes">0</strong>
-            </div>
 
         </div>
 
-    </div>
 
-</div>
+        <div
+            class="results"
+            id="results">
 
-
-<script>
-const SUPABASE_URL = "https://pnurzcnriegzpckctfeo.supabase.co";
-const SUPABASE_KEY = "sb_publishable_lYQIgXetaNJ87YB292bmvg_pkM7MLE-";
-
-
-async function getVotes() {
-    const response = await fetch(
-        SUPABASE_URL + "/rest/v1/votes?select=option",
-        {
-            method: "GET",
-            headers: {
-                "apikey": SUPABASE_KEY,
-                "Authorization": "Bearer " + SUPABASE_KEY
-            }
-        }
-    );
-
-    if (!response.ok) {
-        throw new Error("خطا در دریافت نتایج");
-    }
-
-    return await response.json();
-}
+            <h2>
+                📊 نتایج نظرسنجی
+            </h2>
 
 
-async function showResults() {
-    try {
-        const data = await getVotes();
+            <div class="result-item">
 
-        const votes = [0, 0, 0, 0];
+                <div class="result-title">
 
-        data.forEach(item => {
-            const option = Number(item.option);
-
-            if (option >= 0 && option <= 3) {
-                votes[option]++;
-            }
-        });
-
-        const total =
-            votes[0] +
-            votes[1] +
-            votes[2] +
-            votes[3];
-
-        document.getElementById("totalVotes").innerText = total;
-
-        if (total === 0) return;
-
-        for (let i = 0; i < 4; i++) {
-
-            const percentage =
-                ((votes[i] / total) * 100).toFixed(1);
-
-            document.getElementById("percent" + i).innerText =
-                percentage + "%";
-
-            document.getElementById("bar" + i).style.width =
-                percentage + "%";
-        }
-
-        document.getElementById("results").style.display = "block";
-
-    } catch (error) {
-
-        console.error(error);
-        alert("دریافت نتایج با خطا مواجه شد.");
-    }
-}
-
-
-async function submitVote() {
-
-    const selected =
-        document.querySelector('input[name="poll"]:checked');
-
-    if (!selected) {
-        alert("لطفاً یکی از گزینه‌ها را انتخاب کنید.");
-        return;
-    }
-
-    const option = parseInt(selected.value);
-
-    const button =
-        document.querySelector(".vote-btn");
-
-    button.disabled = true;
-    button.innerText = "در حال ثبت رأی...";
-
-
-    try {
-
-        const response = await fetch(
-            SUPABASE_URL + "/rest/v1/votes",
-            {
-                method: "POST",
-
-                headers: {
-                    "apikey": SUPABASE_KEY,
-                    "Authorization": "Bearer " + SUPABASE_KEY,
-                    "Content-Type": "application/json",
-                    "Prefer": "return=minimal"
-                },
-
-                body: JSON.stringify({
-                    option: option
-                })
-            }
-        );
-
-
-        if (!response.ok) {
-            throw new Error("خطا در ثبت رأی");
-        }
-
-
-        document.getElementById("message").style.display =
-            "block";
-
-
-        document
-            .querySelectorAll('input[name="poll"]')
-            .forEach(input => {
-                input.disabled = true;
-            });
-
-
-        button.innerText = "رأی ثبت شد ✓";
-
-
-        await showResults();
-
-
-    } catch (error) {
-
-        console.error(error);
-
-        alert(
-            "ثبت رأی انجام نشد. اتصال اینترنت و تنظیمات Supabase را بررسی کنید."
-        );
-
-        button.disabled = false;
-        button.innerText = "ثبت رأی";
-    }
-                       }
-    
-</script>
-
-</body>
-</html>
+                    <span>
+                        سامانه ۱۴۱ (تلفن گویا، سایت
